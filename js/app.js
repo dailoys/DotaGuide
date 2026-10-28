@@ -244,6 +244,20 @@
     box.appendChild(prog);
     setTimeout(function(){ bar.style.width = (cur / questions.length * 100) + "%"; }, 30);
 
+    if(q.img){
+      var media = document.createElement("div");
+      media.className = "q-media";
+      var im = document.createElement("img");
+      im.src = q.img;
+      im.alt = q.q;
+      im.width = 600;
+      im.height = 338;
+      im.loading = "lazy";
+      im.decoding = "async";
+      media.appendChild(im);
+      box.appendChild(media);
+    }
+
     var qt = document.createElement("div");
     qt.className = "q-text";
     qt.textContent = q.q;

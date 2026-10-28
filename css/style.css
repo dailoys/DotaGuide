@@ -406,3 +406,30 @@ section{scroll-margin-top:calc(var(--head-h) - 4px)}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---------- Позиции (Roles) ---------- */
+.role-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.role-card .card-icon{margin-bottom:0}
+.role-num{
+  font-family:"Russo One","Exo 2",sans-serif;font-size:2.8rem;line-height:1;flex:none;
+  background:linear-gradient(135deg,var(--red),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 14px var(--red-glow));
+}
+.heroes{
+  margin-top:16px;padding:12px 14px;border-left:3px solid var(--red);
+  background:rgba(224,65,47,.07);border-radius:0 10px 10px 0;
+}
+.heroes b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin-bottom:8px}
+.hero-list{display:flex;flex-wrap:wrap;gap:8px}
+.hero-tag{
+  padding:4px 12px;border-radius:999px;font-size:.85rem;font-weight:600;
+  background:var(--bg2);border:1px solid var(--line);color:var(--text);
+}
+@media (max-width:480px){
+  .role-num{font-size:2.3rem}
+}
+
+/* ---------- Викторина: иллюстрация вопроса ---------- */
+.q-media{margin-bottom:20px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg)}
+.q-media img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
