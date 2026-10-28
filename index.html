@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Механики Dota 2: от крипа до Рашана</title>
+<meta name="description" content="Фан-сайт для новичков: last hit, deny, стакинг, Рошан и другие механики Dota 2 простым языком.">
+<meta name="keywords" content="dota 2, механики, гайд, last hit, deny, стакинг, рошан, руны, термины, викторина">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0c11">
+
+<!-- Favicon (SVG) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23e0412f'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23fff'%3E%E2%9A%94%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+
+<!-- Canonical и Open Graph: замените example.com на реальный адрес сайта -->
+<link rel="canonical" href="https://example.com/dota-guide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DOTA GUIDE">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Механики Dota 2: от крипа до Рашана">
+<meta property="og:description" content="Фан-сайт для новичков: last hit, deny, стакинг, Рошан и другие механики Dota 2 простым языком.">
+<meta property="og:url" content="https://example.com/dota-guide/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Механики Dota 2: от крипа до Рашана">
+<meta name="twitter:description" content="Фан-сайт для новичков: last hit, deny, стакинг, Рошан и другие механики Dota 2 простым языком.">
+
+<!-- Инициализация темы до отрисовки (защита от мигания) -->
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem("dota2guide-theme");
+    if(!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t;
+  }catch(e){
+    document.documentElement.dataset.theme = "dark";
+  }
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Структурированные данные: WebSite -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"DOTA GUIDE — Механики Dota 2",
+  "alternateName":"DOTA GUIDE",
+  "url":"https://example.com/dota-guide/",
+  "inLanguage":"ru",
+  "description":"Фан-сайт для новичков: last hit, deny, стакинг, Рошан и другие механики Dota 2 простым языком."
+}
+</script>
+
+<!-- Структурированные данные: FAQPage (по темам из раздела «Продвинутое») -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Что такое равновесие крипов?","acceptedAnswer":{"@type":"Answer","text":"Место встречи вражеских и союзных волн на линии. Чем ближе линия к вашей башне, тем безопаснее вам добивать крипов и тем неудобнее врагу."}},
+    {"@type":"Question","name":"Что такое оттягивание (пуллинг)?","acceptedAnswer":{"@type":"Answer","text":"Приём, при котором нейтральных крипов из леса заманивают к своей волне, чтобы сместить равновесие линии к своей башне."}},
+    {"@type":"Question","name":"Как стакать нейтральный лагерь?","acceptedAnswer":{"@type":"Answer","text":"Уведите крипов из лагеря примерно на 53-55-й секунде минуты, и при появлении новой волны в лагере будет вдвое больше монстров."}},
+    {"@type":"Question","name":"Какие бывают руны?","acceptedAnswer":{"@type":"Answer","text":"Руны награды дают золото и опыт, руны силы дают временный бонус, руна мудрости даёт дополнительный опыт."}},
+    {"@type":"Question","name":"Что даёт убийство Рошана?","acceptedAnswer":{"@type":"Answer","text":"Команда получает Эгиду Бессмертия: владелец воскресает на месте, если погибнет в течение пяти минут."}},
+    {"@type":"Question","name":"Как работает броня и сопротивление магии?","acceptedAnswer":{"@type":"Answer","text":"Броня режет физический урон, сопротивление магии — магический, а чистый урон не уменьшает ничего."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ ШАПКА ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo" aria-label="На главную">
+      <span class="logo-mark" aria-hidden="true">⚔</span>
+      <span>DOTA<b>GUIDE</b></span>
+    </a>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Переключить тему">
+        <span class="icon-sun" aria-hidden="true">☀️</span>
+        <span class="icon-moon" aria-hidden="true">🌙</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">☰</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a href="#basics">Основы</a>
+      <a href="#advanced">Продвинутое</a>
+      <a href="#terms">Термины</a>
+      <a href="#quiz">Викторина</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <span class="badge">Фан-сайт для новичков</span>
+    <h1>Механики Dota 2: от крипа до Рашана</h1>
+    <p>Dota 2 выглядит сложной, пока никто не объяснил, зачем бить своих же крипов. Мы объясним. Простым языком, с шутками и без экзамена на входе.</p>
+    <a href="#basics" class="btn" id="startBtn">Начать изучение <span aria-hidden="true">↓</span></a>
+    <div class="hero-stats">
+      <div><strong>6</strong>тем для продвинутых</div>
+      <div><strong>16</strong>терминов с пояснениями</div>
+      <div><strong>5</strong>вопросов в викторине</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ОСНОВЫ ============ -->
+<section class="block" id="basics">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Уровень 1</div>
+      <h2>Основы: с чего начинается любая игра</h2>
+      <p>Четыре приёма, которые отличают «я просто хожу по карте» от «я понимаю, что делаю».</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card-icon" aria-hidden="true">🎯</div>
+        <h3>Добивание крипа</h3>
+        <span class="en">Last Hit</span>
+        <p>Золото получает тот, кто нанёс последний удар по вражескому крипу, а не тот, кто бил дольше всех. Крипы — это солдаты на линии, которые идут навстречу друг другу каждые 30 секунд. За каждого добитого вы получаете золото, а заодно развиваете героя.</p>
+        <div class="example"><b>Пример:</b> у вражеского крипа осталась четверть здоровья. Ждёте, пока его ударят свои, и добиваете сами. Золото ваше, а не союзного крипа.</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon" aria-hidden="true">🛡️</div>
+        <h3>Добивание своих</h3>
+        <span class="en">Deny</span>
+        <p>Да, своих крипов можно бить. Когда у союзного крипа осталось меньше половины здоровья, вы можете добить его сами. Враг не получит золота и получит меньше опыта. Это не жестокость, а экономия.</p>
+        <div class="example"><b>Пример:</b> ваш крип почти умирает, и враг уже замахнулся. Вы успеваете ударить первым: золота враг не получает. Для удара по своему крипу зажмите Ctrl и кликните по нему.</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon" aria-hidden="true">😠</div>
+        <h3>Внимание крипов</h3>
+        <span class="en">Aggro</span>
+        <p>Крипы выбирают, кого бить. Если вы ударите вражеского героя рядом с его крипами, они на пару секунд переключатся на вас. Это можно использовать как приём: потянуть крипов за собой или, наоборот, не лезть под удар, когда не стоит.</p>
+        <div class="example"><b>Пример:</b> вы ударили вражеского героя, а его крипы сразу побежали на вас. Если отойти, они вернутся к своим делам. Хотите хорошего здоровья — не бейте героев без нужды.</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon" aria-hidden="true">🖱️</div>
+        <h3>Атака в движении</h3>
+        <span class="en">Attack Move</span>
+        <p>Нажмите A, затем кликните по земле. Герой пойдёт в указанную точку и по дороге атакует первого, кто попадётся на пути. Простой приём, который спасает от ситуаций «я шёл по лесу и просто смотрел, как меня бьют».</p>
+        <div class="example"><b>Пример:</b> в драке вы не успеваете кликать по врагам. Нажали A, кликнули рядом с ними, и герой сам начал бить ближайшего.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПРОДВИНУТОЕ ============ -->
+<section class="block alt" id="advanced">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Уровень 2</div>
+      <h2>Продвинутое: думаем на шаг вперёд</h2>
+      <p>Нажмите на тему, чтобы раскрыть. Здесь уже есть тактика, но мы обещаем не пугать.</p>
+    </div>
+
+    <div class="accordion reveal" id="accordion">
+
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="accPanel1">
+          <span class="ttl"><span class="num">01</span><span>Равновесие крипов<small>Creep Equilibrium</small></span></span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="acc-panel" id="accPanel1"><div><div class="acc-body">
+          <p>Каждые 30 секунд с обеих баз выходят волны крипов. Они идут навстречу и встречаются где-то на линии. Место встречи называют <strong>равновесием</strong>. Если одна сторона убивает больше крипов, её волна выживает в большем числе и толкает линию к вражеской башне.</p>
+          <p>Почему это важно? Вблизи своей башни вам безопаснее добивать крипов, а враг наоборот рискует. Вблизи вражеской башни всё наоборот. Равновесие у вашей башни удобно для защиты, равновесие у чужой — для давления.</p>
+          <div class="tips"><h4>Советы</h4><ul>
+            <li>Не бейте крипов лишний раз, если не хотите тянуть линию к врагу.</li>
+            <li>Хотите, чтобы линия была ближе к вашей башне? Позвольте вражеским крипам убить больше ваших.</li>
+            <li>Смотрите на миникарту: там видно, где сейчас идёт бой.</li>
+          </ul></div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="accPanel2">
+          <span class="ttl"><span class="num">02</span><span>Оттягивание<small>Pulling</small></span></span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="acc-panel" id="accPanel2"><div><div class="acc-body">
+          <p>В лесу живут нейтральные крипы. Если ударить их и отойти к линии, они пойдут за вами и сразятся с вашими линейными крипами. Это и есть <strong>оттягивание</strong>.</p>
+          <p>Зачем? Нейтралы встречают вашу волну раньше, чем она дойдёт до врага, поэтому равновесие смещается к вашей башне. Герой на линии получает безопасное место, а саппорт бесплатно мешает врагам фармить.</p>
+          <div class="tips"><h4>Советы</h4><ul>
+            <li>Обычно оттягивают на 15-й и 45-й секунде каждой минуты, чтобы нейтралы столкнулись с волной в нужный момент.</li>
+            <li>Тяните тех, кто ближе к вашей линии.</li>
+            <li>Сначала потренируйтесь в режиме с ботами, там никто не ругается.</li>
+          </ul></div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="accPanel3">
+          <span class="ttl"><span class="num">03</span><span>Накопление лагеря<small>Stacking</small></span></span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="acc-panel" id="accPanel3"><div><div class="acc-body">
+          <p>Нейтральные крипы появляются в лагере раз в минуту, но только если лагерь пуст. Если вы отведёте старых крипов, а новые появятся на их месте, в лагере окажется вдвое больше монстров. Это <strong>накопление</strong>, или стакинг.</p>
+          <p>Герой с хорошим уроном потом убивает всех сразу и получает вдвое больше золота за то же время. Саппорты любят стакать, пока у них нет другого дела.</p>
+          <div class="tips"><h4>Советы</h4><ul>
+            <li>Ударьте крипов примерно на 53–55-й секунде минуты и уведите их из лагеря.</li>
+            <li>Не забудьте вернуться за нужную секунду, иначе стакать придётся заново.</li>
+            <li>Сложные лагеря лучше оставить тем, кто может с ними справиться.</li>
+          </ul></div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="accPanel4">
+          <span class="ttl"><span class="num">04</span><span>Контроль рун<small>Rune Control</small></span></span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="acc-panel" id="accPanel4"><div><div class="acc-body">
+          <p>Руны — это бонусы, которые появляются на карте. Есть несколько видов:</p>
+          <p><strong>Руны награды (Bounty):</strong> дают золото и опыт, появляются каждые 3 минуты в разных точках карты, включая базы.<br>
+          <strong>Руны силы (Power):</strong> в реке, на короткое время дают сильный бонус: удвоенный урон, скорость, невидимость, восстановление здоровья и маны и другое.<br>
+          <strong>Руна мудрости (Wisdom):</strong> раз в 7 минут появляется на краях карты и даёт дополнительный опыт.</p>
+          <div class="tips"><h4>Советы</h4><ul>
+            <li>Заводите таймер в голове: руны появляются в одни и те же моменты.</li>
+            <li>Следите, где враг. Взять руну под носом у врага — риск.</li>
+            <li>Если рядом опасно, руну лучше пропустить: жизнь героя дороже бонуса.</li>
+          </ul></div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="accPanel5">
+          <span class="ttl"><span class="num">05</span><span>Тайминги Рошана<small>Roshan Timing</small></span></span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="acc-panel" id="accPanel5"><div><div class="acc-body">
+          <p>Рошан — это огромный нейтральный босс, живущий в яме около реки. Убить его сложно, но награда того стоит. За победу команда получает <strong>Эгиду Бессмертия</strong>: если владелец погибнет в течение пяти минут, он тут же воскреснет на месте.</p>
+          <p>Рошан возрождается через 8–11 минут после смерти (точное время случайно). За следующие убийства команда получает и другие полезные награды: сыр, осколок Аганима и другие.</p>
+          <div class="tips"><h4>Советы</h4><ul>
+            <li>Не идите к Рошану, пока не убедитесь, что враги заняты или далеко.</li>
+            <li>Эгиду лучше отдать тому, кто сильнее всего влияет на драку.</li>
+            <li>Часто вся команда гибнет у ямы Рошана. Не повторяйте чужие ошибки.</li>
+          </ul></div>
+        </div></div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false" aria-controls="accPanel6">
+          <span class="ttl"><span class="num">06</span><span>Броня и сопротивление магии<small>Armor & Magic Resistance</small></span></span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="acc-panel" id="accPanel6"><div><div class="acc-body">
+          <p>Урон в Dota 2 бывает трёх типов. <strong>Физический</strong> режет броня: чем её больше, тем меньше урона вы получаете (но с ростом брони эффект слабеет, 10 единиц брони дают примерно 37% защиты). <strong>Магический</strong> режет сопротивление магии: у героев оно обычно 25% с самого начала. <strong>Чистый</strong> урон не уменьшает ничего.</p>
+          <p>Кроме числа брони, у юнитов есть и <strong>тип брони</strong> (у героя, крипа или постройки), от которого зависит, как действует тот или иной вид атаки. Например, осадные крипы наносят постройкам повышенный урон, а героям нет.</p>
+          <p>Ещё есть предмет «Чёрный король» (БКБ), который на несколько секунд делает героя неуязвимым для большинства заклинаний. Но не всех: некоторые способности пробивают защиту.</p>
+          <div class="tips"><h4>Советы</h4><ul>
+            <li>Враг бьёт заклинаниями? Подумайте о предметах на сопротивление магии.</li>
+            <li>Враг бьёт руками? Покупайте броню.</li>
+            <li>БКБ приберегите для главной драки, а не для каждой стычки.</li>
+          </ul></div>
+        </div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ТЕРМИНЫ ============ -->
+<section class="block" id="terms">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Словарь</div>
+      <h2>Термины: говорим на одном языке</h2>
+      <p>Нажмите на любой термин, чтобы узнать, что он значит. В игре его произносят так часто, что лучше знать заранее.</p>
+    </div>
+    <noscript><p class="hint" style="color:var(--bad)">Для просмотра терминов и викторины включите JavaScript.</p></noscript>
+    <div class="search reveal">
+      <label class="search-ico" for="termSearch" aria-hidden="true">🔍</label>
+      <input type="search" id="termSearch" placeholder="Поиск термина…" autocomplete="off">
+    </div>
+    <p class="term-count reveal" id="termCount">Всего терминов: 16</p>
+    <div class="tags reveal" id="tags"></div>
+    <div class="no-results" id="noResults">Ничего не найдено. Попробуйте другой запрос.</div>
+    <p class="hint reveal">Закрыть окно можно клавишей Esc или кликом вне окна.</p>
+  </div>
+</section>
+
+<!-- ============ ВИКТОРИНА ============ -->
+<section class="block alt" id="quiz">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Проверка</div>
+      <h2>Викторина: сколько вы запомнили?</h2>
+      <p>Пять вопросов, никаких штрафов и ни одного насмешливого сообщения в чате.</p>
+    </div>
+    <div class="quiz reveal" id="quizBox" aria-live="polite"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ ФУТЕР ============ -->
+<footer class="footer">
+  <div class="container">
+    <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true">⚔</span><span>DOTA<b>GUIDE</b></span></a>
+    <p>Хотите поиграть? Скачайте игру на официальном сайте.</p>
+    <a class="ext" href="https://www.dota2.com" target="_blank" rel="noopener noreferrer">Официальный сайт Dota 2 ↗</a>
+    <p class="disclaimer">Это неофициальный фан-сайт. Он не связан с Valve Corporation и не одобрен ею. Dota 2 и связанные с ней названия являются товарными знаками Valve Corporation. Данные об игре могут устареть: баланс меняется с каждым обновлением.</p>
+  </div>
+</footer>
+
+<!-- Модальное окно -->
+<div class="modal-overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="modal-close" id="mClose" aria-label="Закрыть">✕</button>
+    <h3 id="mTitle"></h3>
+    <div class="full" id="mFull"></div>
+    <p id="mDef"></p>
+    <div class="tip" id="mTip"></div>
+  </div>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
